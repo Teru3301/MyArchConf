@@ -1,0 +1,120 @@
+{
+    // Основные настройки
+    "layer": "top",
+    "height": 30, // Тонкая панель
+    "spacing": 5, // Минимальные отступы
+
+    // Порядок блоков
+    "modules-left": ["cpu", "memory", "temperature", "network"],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": ["tray", "backlight", "pulseaudio", "hyprland/language", "custom/keyboard-layout", "battery", "clock"],
+
+    // Настройки модулей
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "format-icons": {
+            "default": "{name}", // Неактивный workspace
+            "active": "{name}",   // Активный workspace
+            "urgent": "{name}!"  // Workspace с уведомлением
+        },
+        "on-click": "activate", // Переключение на workspace при клике
+        "active-only": false,
+    },
+
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false,
+        "interval": 1,
+        "format-alt": "CPU: {usage}%",
+        "states": {
+            "warning": 70, // Предупреждение при нагрузке > 70%
+            "critical": 90 // Критическое состояние при нагрузке > 90%
+        }
+    },
+
+    "memory": {
+        "format": "{}% ",
+        "interval": 5,
+        "states": {
+            "warning": 70, // Предупреждение при использовании > 70%
+            "critical": 90 // Критическое состояние при использовании > 90%
+        }
+    },
+
+    "temperature": {
+        "critical-threshold": 80, // Критическая температура
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""],
+        "states": {
+            "critical": 80 // Критическое состояние при температуре > 80°C
+        }
+    },
+
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "format-disconnected": "Disconnected ⚠",
+        "states": {
+            "disconnected": true // Подсветка при отключении сети
+        }
+    },
+
+    "pulseaudio": {
+        "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", "", "", "", "", "", "", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30, // Предупреждение при заряде < 30%
+            "critical": 15 // Критическое состояние при заряде < 15%
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%H:%M}"
+    },
+
+    "tray": {
+        "spacing": 5
+    },
+
+    "custom/keyboard-layout": {
+        "exec": "~/.config/waybar/keyboard-layout.sh",
+        "interval": 1,
+        "format": "{}",
+        "return-type": "json"
+    },
+
+    "hyprland/language": {
+        "format": "{}",
+        "format-en": "EN",
+        "format-ru": "RU",
+        "tooltip": true
+    },
+
+    "backlight": {
+        "format": "{percent}% {icon}",
+        "format-icons": ["💡"]   // "○", "◉", "●"   ...   "", ""
+    }
+}
