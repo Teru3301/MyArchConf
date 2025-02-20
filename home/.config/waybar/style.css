@@ -45,9 +45,10 @@ window#waybar {
 #custom-keyboard-layout {
     padding-right: 8px;
 }
-#tray {
+#tray, #custom-playerctl, #mpris {
     background: #44475a;
     margin-right: 20px;
+    margin-left: 20px;
     border-radius: 3px;
     padding-right: 10px;
     padding-left: 10px;
@@ -86,8 +87,8 @@ window#waybar {
 
 /* Workspace с уведомлением */
 #workspaces button.urgent {
-    color: #eec746; /* Цвет текста workspace с уведомлением */
-    background: #44475a; /* Фон workspace с уведомлением */
+    color: #44475a; /* Цвет текста workspace с уведомлением */
+    background: #eec746; /* Фон workspace с уведомлением */
 }
 
 /* При наведении курсора */

@@ -5,9 +5,10 @@
     "spacing": 5, // Минимальные отступы
 
     // Порядок блоков
-    "modules-left": ["cpu", "memory", "temperature", "network"],
+    "modules-left": ["cpu", "memory", "temperature", "network", "mpris"],
     "modules-center": ["hyprland/workspaces"],
     "modules-right": ["tray", "backlight", "pulseaudio", "hyprland/language", "custom/keyboard-layout", "battery", "clock"],
+
 
     // Настройки модулей
     "hyprland/workspaces": {
@@ -59,6 +60,26 @@
         }
     },
 
+    "mpris": {
+        "format": "▶  {artist} - {title}",
+        "format-paused": "⏸  {artist} - {title}",
+        "format-stopped": "⏹",
+        "format-disconnected": "Sound: Disconnected",
+        "on-click": "playerctl play-pause",
+        "on-click-right": "playerctl next",
+        "on-click-middle": "playerctl previous",
+        "max-length": 30,
+        "min-length": 30
+    },
+
+    "custom/playerctl": {   //  тоже самое что mpris
+        "interval": 1,
+        "exec": "~/.config/waybar/scripts/playerctl.sh",
+        "max-length": 30,
+        "min-length": 30,
+        "return-type": "json"
+    },
+
     "pulseaudio": {
         "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon} {format_source}",
@@ -91,8 +112,9 @@
     },
 
     "clock": {
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:%H:%M}"
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>",
+        "tooltip": true,
+        "format": "{:%B %C %R}"
     },
 
     "tray": {
